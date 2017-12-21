@@ -1,3 +1,6 @@
+from mnist.wai import cifar10
+
+
 def unpickle(file):
     import pickle
     with open(file, 'rb') as fo:
@@ -7,11 +10,11 @@ def unpickle(file):
 
 
 if __name__ == '__main__':
-
     import os
     print(os.getcwd())
 
-    data_group_1 = unpickle("cifar-10/cifar-10-batches-py/data_batch_1")
+    cifar10.download()
+    data_group_1 = unpickle(cifar10.dataset_dir + "/data_batch_1")
 
     labels = data_group_1[b'labels']
     from numpy import ndarray
